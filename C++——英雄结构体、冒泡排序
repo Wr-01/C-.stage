@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+#include <string>
+//定义一个英雄的结构体，创建英雄数组存储数据，再利用冒泡排序给英雄的年龄排序，最后打印出年龄升序的结果
+
+
+struct hero
+{
+	string name;
+	int age;
+	string sex;
+};
+
+void bubbleSort(struct hero heroArr[],int len)
+{
+	for(int i=0;i<len-1;i++)
+	{
+		for(int j=0;j<len-i-1;j++)
+		{
+			if(heroArr[j].age>heroArr[j+1].age)
+			{
+				struct hero temp=heroArr[j];
+				heroArr[j]=heroArr[j+1];
+				heroArr[j+1]=temp;
+			}	
+		}
+	}
+}
+
+void printhero(struct hero heroArr[],int len)
+{
+	cout<<"升序后的顺序："<<endl;
+	for(int i=0;i<len;i++)
+	{
+		cout<< heroArr[i].name<<" "<<heroArr[i].age<<" "<<heroArr[i].sex <<endl;	
+	}
+}
+
+int main()
+{
+	   struct hero heroArr[4]=
+		{
+			{"周瑜",24,"男"},
+			{"貂蝉",19,"女"},
+			{"卢布",22,"男"},
+			{"小乔",20,"女"},
+		};
+	   	int len=sizeof(heroArr)/sizeof(heroArr[0]);
+		cout<<"升序后的顺序："<<endl;
+		for(int i=0;i<len;i++)
+		{
+			cout<<heroArr[i].name<<" "<<heroArr[i].age<<" "<<heroArr[i].sex <<endl;	
+		}
+		bubbleSort(heroArr,len);
+		printhero(heroArr,len);
+		system("pause");
+		return 0;
+}
