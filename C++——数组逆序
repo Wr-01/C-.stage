@@ -1,0 +1,91 @@
+//#include<iostream>
+//using namespace std;
+////让给定数组逆置
+//
+//int main()
+//{
+//	int arr[5]={1,2,3,4,5};
+//	int temp=0;
+//	cout<<"初始数组元素顺序："<<endl;
+//	for(int i=0;i<5;i++)
+//	{
+//		cout<<arr[i]<<" ";
+//	}
+//	cout<<endl;
+//	int start=0;
+//	int end=sizeof(arr)/sizeof(arr[0])-1;
+//	while(start<end)
+//	{
+//		temp=arr[start];
+//		arr[start]=arr[end];
+//		arr[end]=temp;
+//		start++;
+//		end--;
+//	}
+//	cout<<"逆置后的数组元素顺序："<<endl;
+//	for(int i=0;i<5;i++)
+//	{
+//		cout<<arr[i]<<" ";
+//	}
+//	cout<<endl;
+//	//for(int i=4;i>2;i--)  //让数组第一个和最后一个元素置换，一次往中间走。
+//	//{
+//	//	temp=arr[i];
+//	//	arr[i]=arr[5-i-1];
+//	//	arr[5-i-1]=temp;
+//	//}
+//	//cout<<arr[0]<<endl;
+//	//cout<<arr[1]<<endl;
+//	//cout<<arr[2]<<endl;
+//	//cout<<arr[3]<<endl;
+//	//cout<<arr[4]<<endl;
+//
+//	system ("pause");
+//	return 0;
+//}
+
+#include<iostream>
+using namespace std;
+//让给定数组逆序
+
+//打印当前数组序列
+void print(int Array[],int len)
+{
+	for(int i=0;i<len;i++)
+	{
+		cout<<Array[i]<<" ";
+	}
+	cout<<endl;
+}
+//数组元素逆序函数
+void reverse(int Array[],int len)
+{
+	int temp=0;
+	//int start=0;
+	int end=len-1;
+	//while(start<end)
+	for(int start=0;start<end;start++)
+	{
+		temp=Array[start];
+		Array[start]=Array[end];
+		Array[end]=temp;
+		//start++;
+		end--;
+	}
+}
+int main()
+{
+	int array[]={1,2,3,4,5};
+	int len = sizeof(array)/sizeof(array[0]);
+	cout<<"逆序前的数组序列为："<<endl;
+	print(array,len);
+	reverse(array,len);
+	//int end=sizeof(array)/sizeof(array[0])-1;
+	//cout<<end<<endl;
+	cout<<"逆序后的数组序列为："<<endl;
+	print(array,len);
+	system("pause");
+	return 0;
+}
+
+
