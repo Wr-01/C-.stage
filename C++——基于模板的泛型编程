@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string>
+
+struct Student {
+	int id;
+	char name[100];
+	int score;
+};
+void print1(int a[], int len) {
+	for (int i = 0; i < len; i++) {
+		printf("%d ", a[i]);
+	}
+	printf("\n");
+}
+void print2(Student a[], int len) {
+	for (int i = 0; i < len; i++) {
+		printf("%d %s %d\t", a[i].id, a[i].name, a[i].score);
+		printf("\n");
+	}
+}
+
+template <typename T, typename C>
+void bubbleSort(T a[], int len, C c ) {
+	for (int bound = 0; bound < len; bound++) {
+		for (int cur = len - 1; cur > bound; cur--) {
+			if ( c(a[cur-1],a[cur]) ==1 ){
+				T temp = a[cur - 1];
+				a[cur - 1] = a[cur];
+				a[cur] = temp;
+			}
+		}
+	}
+}
+//按照int型数据进行升序排列
+int intAsce(int a, int b) {
+	return a > b ? 1 : 0;
+}
+//按照结构体数据进行降序排列
+int strDesc(Student a, Student b) {
+	return  a.id < b.id ? 1 : 0;
+}
+
+int main() {
+	int arr[] = { 2,4,5,3,6,1 };
+	int len1 = sizeof(arr) / sizeof(arr[0]);
+	bubbleSort(arr, len1, intAsce);
+	print1(arr, len1);
+	Student stu[] = {
+		{2,"张三",68},
+		{1,"李四",87},
+		{4,"王五",90},
+		{3,"赵六",79}
+	};
+	int len2 = sizeof(stu) / sizeof(stu[0]);
+	bubbleSort(stu, len2, strDesc);
+	print2(stu, len2);
+
+	system("pause");
+	return 0;
+}
